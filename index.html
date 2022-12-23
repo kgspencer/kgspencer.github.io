@@ -1,0 +1,126 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300&display=swap" rel="stylesheet">
+    <title>cryptoquip!</title>
+  </head>
+  <body>
+    <header>
+      <h1>CRYPTOQUIP</h1>
+      <ul id="menu">
+        <li id="abtBtn">About</li>
+        <li id="howToBtn">How To Play</li>
+        <li id="dailyBtn">Daily Cryptoquip</li>
+      </ul>
+    </header>
+    <section id="about" class="hidden">
+      <h2>Merry Christmas!</h2>
+      <p>
+        This is a web-based Cryptoquip game that I've been working on for the past few weeks. It's similar
+        to Wordle in that a new cryptoquip will be available every day.
+      </p>
+      <p>
+        There are a few behaviors beyond the scope of this website, which include:
+        <ul>
+          <li>Your game progress will not be saved if you refresh or exit the page.</li>
+          <li>The game only accepts input from the on-screen keyboard, not your physical one.</li>
+          <li>Though I tried to test the game, there may be errors on my end.
+            Let me know if something isn't working the way it's supposed to!
+          </li>
+        </ul>
+      </p>
+      <p>I hope you enjoy this game!</p>
+      <p><strong>Love,</strong></p>
+      <p id="signature"><strong>Kathryn</strong></p>
+    </section>
+    <section id="howTo" class="hidden">
+      <p>
+        This game is meant to mimic the classic Cryoptoquip game. The given phrase is encrypted
+        with a letter substitution cipher. The goal is to decode the phrase by figuring out which
+        letter each encrypted letter represents.
+      </p>
+      <div>
+        <p>
+          Hovering over a letter will highlight each same letter, so you can see the placements of
+          each character. Clicking on a letter will <strong>select</strong> it. It will look like this:
+        </p>
+        <p class="ex">Q</p>
+      </div>
+      <div>
+        <p>
+          To swap a letter, you can choose a letter from the keyboard. Once a letter from the phrase
+          and the keyboard have been selected, the phrase letter will become <strong>locked</strong>.
+          You can still swap a locked letter, but it will not appear highlighted anymore
+          when you hover over it. Once locked, the letter will look like this:
+        </p>
+        <p class="ex locked">Q</p>
+      </div>
+      <div>
+        <p>
+          When you think you've solved the phrase, you can <strong>test</strong> your answer using the Check Answer
+          button.
+        </p>
+      </div>
+      <article>
+        <p>Notes:</p>
+          <ul>
+            <li>The 'Selected Letter' on screen refers to the <i>phrase</i> letter you have selected. It is
+            useful if you're swapping a locked letter.</li>
+            <li>You cannot swap a letter that has already been swapped. Try swapping the desired letter with
+            a different one first.</li>
+            <li>The order in which you select a phrase letter and keyboard letter should not matter. Note that
+            if you choose from the keyboard first, the phrase letter will be locked upon clicking it.</li>
+            <li>You shouldn't be able to swap any punctuation or spaces, and their appearance shouldn't change.</li>
+          </ul>
+        </p>
+      </article>
+    </section>
+    <section id="daily">
+      <section id="cryptoQuip"></section>
+      <p id="selected">Selected Letter:</p>
+      <section id="keyboard">
+        <div class="keysRow">
+          <button>Q</button>
+          <button>W</button>
+          <button>E</button>
+          <button>R</button>
+          <button>T</button>
+          <button>Y</button>
+          <button>U</button>
+          <button>I</button>
+          <button>O</button>
+          <button>P</button>
+        </div>
+        <div class="keysRow">
+          <button>A</button>
+          <button>S</button>
+          <button>D</button>
+          <button>F</button>
+          <button>G</button>
+          <button>H</button>
+          <button>J</button>
+          <button>K</button>
+          <button>L</button>
+        </div>
+        <div class="keysRow">
+          <button>Z</button>
+          <button>X</button>
+          <button>C</button>
+          <button>V</button>
+          <button>B</button>
+          <button>N</button>
+          <button>M</button>
+        </div>
+      </section>
+      <button id="testBtn">Check Answer</button>
+      <div id="results" class="hidden">
+        <p id="win" class="hidden">Congrats! You've solved this cryptoquip.</p>
+        <p id="lose" class="hidden">There are one or more incorrect letters in the cryptoquip.</p>
+        <button id="back" class="hidden">Return to Game</button>
+      </div>
+    </section>
+  </body>
+</html>
