@@ -2,7 +2,8 @@
 (function() {
   const ALPHABETOG = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
   'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  let message = 'THE ATHLETE GOT SICK AND COULDN\'T TAKE PART IN ANY GAMES. HE FELT COMPLETELY OUT OF SPORTS.';
+  // let newAlphabet;
+  let message = 'MUSICAL INSTRUMENT LIKE A PIANO OR AN ORGAN PLAYED ALONG A COASTLINE: A SEABOARD KEYBOARD.';
   let keyboardLetter = '';
   let chosenLetter = '';
   let clickedLetter;
@@ -98,8 +99,10 @@
 
   // adds scrambled message to the dom
   function populateMessage() {
-    let newAlphabet = shuffleAlphabet();
+    let trialAlphabet = shuffleAlphabet();
+    // console.log(trialAlphabet);
     let crypto = id('cryptoQuip');
+    let newAlphabet = ['O', 'P', 'B', 'J', 'L', 'N', 'I', 'X', 'T', 'A', 'C', 'Y', 'D', 'S', 'G', 'R', 'K', 'V', 'W', 'U', 'Z', 'M', 'H', 'Q', 'F', 'E'];
 
     let words = message.split(" ");
     for (let i = 0; i < words.length; i++) {
