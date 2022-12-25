@@ -8,6 +8,7 @@ body {
 h1 {
   font-size: 46px;
   color: #b24d0e;
+  margin-bottom: 15px;
 }
 
 #howTo, #about {
@@ -44,12 +45,16 @@ h1 {
 
 #timer {
   margin-top: 50px;
+  position: fixed;
+  bottom: 0;
+  right: 25;
 }
 
 #cryptoQuip {
   width: 70%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 50px;
   font-size: 30px;
   padding-top: 5px;
   display: flex;
