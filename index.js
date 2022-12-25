@@ -9,6 +9,7 @@
   let numSwapped = 0;
   let totalSeconds = 0;
   let timerId;
+  // comment
 
   window.addEventListener('load', init);
 
