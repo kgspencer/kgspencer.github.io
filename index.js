@@ -2,7 +2,6 @@
 (function() {
   const ALPHABETOG = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
   'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  // let newAlphabet;
   let message = 'MUSICAL INSTRUMENT LIKE A PIANO OR AN ORGAN PLAYED ALONG A COASTLINE: A SEABOARD KEYBOARD.';
   let keyboardLetter = '';
   let chosenLetter = '';
