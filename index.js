@@ -7,6 +7,9 @@
   let keyboardLetter = '';
   let chosenLetter = '';
   let clickedLetter;
+  let numSwapped = 0;
+  let totalSeconds = 0;
+  let timerId;
 
   window.addEventListener('load', init);
 
@@ -25,7 +28,11 @@
     populateMessage();
   }
 
+  // displays results which change depending on if the user won or lost. displays their time
+  // if they won; pauses the timer regardless
   function testAnswer() {
+    clearInterval(timerId);
+
     id('selected').classList.add('hidden');
     id('keyboard').classList.add('hidden');
     id('testBtn').classList.add('hidden');
@@ -48,11 +55,6 @@
         solved = false;
       }
     }
-    if(solved) {
-      console.log('win!');
-    } else {
-      console.log('lose!');
-    }
     return solved;
   }
 
@@ -70,7 +72,12 @@
     id('back').classList.add('hidden');
   }
 
+  // when the user goes back to the playscreen, the timer is unpaused
   function playScreen() {
+    if (!id('lose').classList.contains('hidden') && isLetterLocked()) { // if losing message is displayed rn
+      timerId = setInterval(advanceTimer, 1000);
+    }
+
     id('about').classList.add('hidden');
     id('howTo').classList.add('hidden');
     id('daily').classList.remove('hidden');
@@ -200,14 +207,32 @@
     return lettersSelected;
   }
 
+  // checks to see if any message letter is currently locked
+  function isLetterLocked() {
+    let msgBtns = qsa('#cryptoQuip button');
+    let lettersLocked = false;
+    for (let i = 0; i < msgBtns.length; i++) {
+      if (msgBtns[i].classList.contains('locked')) {
+        lettersLocked = true;
+      }
+    }
+    return lettersLocked;
+  }
+
   // swaps the clicked message letter with the clicked keyboard letter.
   function swapLetters() {
-    console.log(clickedLetter);
-    console.log(keyboardLetter);
 
     if ((chosenLetter.length !== 0) && (keyboardLetter.length !== 0)) {
+
       let msgBtns = qsa('#cryptoQuip button');
       if (!alreadySwapped()) { // ensures that a letter is not swapped twice
+
+        // timer functionality - only starts timer when the first letter is locked
+        numSwapped++;
+        if (numSwapped == 1) {
+          startTimer();
+        }
+
         if (clickedLetter.classList.contains('locked')) { //if it's a locked letter,
           for (let i = 0; i < msgBtns.length; i++) {
             // only swap the locked letters
@@ -221,6 +246,7 @@
           for (let i = 0; i < msgBtns.length; i++) {
             if (msgBtns[i].textContent === chosenLetter && !msgBtns[i].classList.contains('locked')) { // 2nd test should be unnecessary now
               msgBtns[i].classList.add('locked');
+              // gameStarted = true;
               msgBtns[i].classList.remove('selected');
               msgBtns[i].classList.remove('bright');
               msgBtns[i].textContent = keyboardLetter;
@@ -235,6 +261,14 @@
             msgBtns[i].classList.remove('bright');
           }
         }
+        id('error').classList.remove('hidden');
+        id('selected').classList.add('hidden');
+        id('clue').classList.add('hidden');
+        setTimeout(() => {
+          id('error').classList.add('hidden');
+          id('selected').classList.remove('hidden');
+          id('clue').classList.remove('hidden');
+        }, 2000);
         console.log('That letter has already been swapped.');
       }
 
@@ -243,6 +277,31 @@
       id('selected').textContent = 'Selected Letter: ' + chosenLetter;
       enableMouseovers();
     }
+  }
+
+  function startTimer() {
+    timerId = setInterval(advanceTimer, 1000);
+  }
+
+  function advanceTimer() {
+    totalSeconds++;
+    let timer = id('time');
+    timer.textContent = translateTime();
+  }
+
+  function translateTime() {
+    let funkyTime = "";
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds % 60;
+    if (minutes < 10) {
+      funkyTime += "0";
+    }
+    funkyTime += minutes + ":";
+    if (seconds < 10) {
+      funkyTime += "0";
+    }
+    funkyTime += seconds;
+    return funkyTime;
   }
 
   // determines if a letter has already been swapped, so a letter isn't swapped more than once.

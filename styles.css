@@ -42,12 +42,16 @@ h1 {
   height: fit-content;
 }
 
+#timer {
+  margin-top: 50px;
+}
+
 #cryptoQuip {
   width: 70%;
   margin-left: auto;
   margin-right: auto;
   font-size: 30px;
-  padding-top: 50px;
+  padding-top: 5px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -79,6 +83,10 @@ h1 {
   font-weight: 700;
 }
 
+#error {
+  margin: 35px;
+}
+
 #testBtn, #back {
   padding: 20px;
   background-color: #b24d0e;
@@ -86,7 +94,8 @@ h1 {
   border-radius: 4px;
   border: none;
   font-size: 18px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Sora', sans-serif !important;
+  font-weight: 300;
 }
 
 #keyboard {

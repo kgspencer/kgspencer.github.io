@@ -23,7 +23,7 @@
         to Wordle in that a new cryptoquip will be available every day.
       </p>
       <p>
-        There are a few behaviors beyond the scope of this website, which include:
+        There are a few behaviors limited by the scope of this website, which include:
         <ul>
           <li>Your game progress will not be saved if you refresh or exit the page.</li>
           <li>The game only accepts input from the on-screen keyboard, not your physical one.</li>
@@ -67,6 +67,7 @@
       <article>
         <p>Notes:</p>
           <ul>
+            <li>The timer will start once you have swapped your first letter.</li>
             <li>The 'Selected Letter' on screen refers to the <i>phrase</i> letter you have selected. It is
             useful if you're swapping a locked letter.</li>
             <li>You cannot swap a letter that has already been swapped. Try swapping the desired letter with
@@ -79,9 +80,11 @@
       </article>
     </section>
     <section id="daily">
+      <p id="timer">Time: <span id="time">00:00</span></p>
       <section id="cryptoQuip"></section>
-      <p>Today's Cryptoquip Clue: B equals C</p>
+      <p id="clue">Today's Cryptoquip Clue: B equals C</p>
       <p id="selected">Selected Letter:</p>
+      <p id="error" class="hidden"><strong>That letter has already been swapped.</strong></p>
       <section id="keyboard">
         <div class="keysRow">
           <button>Q</button>
